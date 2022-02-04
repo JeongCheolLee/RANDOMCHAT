@@ -39,8 +39,8 @@ export class ChatsGateway
     @MessageBody() username: string,
     @ConnectedSocket() socket: Socket,
   ) {
-    console.log(username);
-    console.log(socket.id);
-    socket.emit('hello_user', 'hello ' + username);
+    // username db에 적재
+    socket.broadcast.emit('user_connected', username);
+    return username;
   }
 }
